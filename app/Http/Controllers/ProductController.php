@@ -92,7 +92,8 @@ class ProductController extends Controller
           'product' => $product,
           'max' => $max,
           'min' => $min,
-          'avg' => $avg
+         'avg' => $avg,
+         'bids' => $bids
       ]);
     }
 
