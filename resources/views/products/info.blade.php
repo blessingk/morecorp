@@ -14,7 +14,7 @@
               <img class="card-img-top" src="../../img/ssdram1.png" alt="product">
               <div class="card-body">
                 <p class="card-text">Name: {{$product->name}}<br> Price: {{$product->price}}  </p>
-                <p class="card-text">Heightest Bid: {{$max}} <br>Lowest Bid: {{$min}} <br>Average Bid: {{$avg}}</p>
+                <p class="card-text">Heightest Bid: {{$max}} <br>Lowest Bid: {{$min}} <br>Your Bid: {{$my_bid->bid_price}}</p>
                 <p class="card-text">{{$product->description}}</p>
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
