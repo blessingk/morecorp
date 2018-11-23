@@ -71,7 +71,7 @@ class ProductController extends Controller
       $min = $bids->min('bid_price');
       $avg = $bids->avg('bid_price');
 
-      $my_bid = Bid::where('email', Auth::user()->email)->first();
+      $my_bid = Bid::where(['email' => Auth::user()->email, 'product_id' => $id])->first();
 
       return view('products.info', [
           'product' => $product,
@@ -99,14 +99,22 @@ class ProductController extends Controller
     public function product_biding(Request $request, $id) {
 
         $request->validate([
-            'email' => 'required|unique:bids|max:255',
+            'email' => 'required|max:255',
             'bid_price' => 'required'
         ]);
 
-        $bid = new Bid();
-        $bid->product_id = $id;
-        $bid->bid_price = $request->bid_price;
-        $bid->email = $request->email;
+        $bid = Bid::where('product_id', $id)->first();
+        if($bid) {
+            if($bid->email === Auth::user()->email) {
+                $bid->bid_price = $request->bid_price;
+            }
+
+        } else {
+            $bid = new Bid();
+            $bid->product_id = $id;
+            $bid->bid_price = $request->bid_price;
+            $bid->email = $request->email;
+        }
         $bid->save();
 
         return redirect('home')->withMessage('Product bid successfully');
