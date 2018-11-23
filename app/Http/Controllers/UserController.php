@@ -9,21 +9,10 @@ class UserController extends Controller
 {
     public function create_user(Request $request) {
 
-        // $email_error = $request->validate([
-        //     'email' => 'email|unique:users'
-        // ]);
-        //
-        // if($email_error) {
-        //     return response()->json(['error' => $email_error], 404);
-        // }
-
         $user = new User();
         $user->name = $request->name;
         $user->surname = $request->surname;
         $user->email = $request->email;
-        $user->contact_number = $request->contact_number;
-        $user->company = $request->company;
-        $user->voip = $request->voip;
         $user->user_type_id = 2;
         $user->password = bcrypt($request->password);
         $user->save();
