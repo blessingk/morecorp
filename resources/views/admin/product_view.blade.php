@@ -26,6 +26,10 @@
                 <p class="card-text">Name: {{$product->name}}<br> Price: {{$product->price}}  </p>
                 <p class="card-text">Heightest Bid: {{$max}} <br>Lowest Bid: {{$min}} <br>Average Bid: {{$avg}}</p>
                 <p class="card-text">{{$product->description}}</p>
+                <h3>All Bids</h3>
+                @foreach ($bids as $key => $bid)
+                    <p class="card-text">User Email: {{$bid->email}} <br /> Bid Amount: {{$bid->bid_price}}</p>
+                @endforeach
               </div>
             </div>
           </div>
