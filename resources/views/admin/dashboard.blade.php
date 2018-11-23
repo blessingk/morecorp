@@ -25,6 +25,7 @@
               <th>Sku</th>
               <th>Price</th>
               <th>Description</th>
+              <th>Views</th>
               <th>Manage</th>
             </tr>
           </thead>
@@ -36,7 +37,9 @@
               <td>{{$product->sku}}</td>
               <td>{{$product->price}}</td>
               <td>{{$product->description}}</td>
+              <td>{{$product->view_count}}</td>
               <td>
+                <a href="{{route('admin.product.view', $product->id)}}" class="btn btn-sm btn-outline-secondary">View</a>
                 <a href="{{route('product.edit', $product->id)}}" class="btn btn-sm btn-outline-secondary">Edit</a>
                 <a href="{{route('product.delete', $product->id)}}" class="btn btn-sm btn-outline-secondary">Delete</a>
               </td>

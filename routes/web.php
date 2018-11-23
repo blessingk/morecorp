@@ -25,3 +25,4 @@ Route::get('edit/product/{id}', 'ProductController@edit')->name('product.edit');
 Route::get('product/info/{id}', 'ProductController@product_info')->name('product.info');
 Route::get('product/bid/{id}', 'ProductController@product_bid')->name('product.bid');
 Route::post('product/user/bid/{id}', 'ProductController@product_biding')->name('product.user.bid');
+Route::get('admin/product/view/{id}', 'ProductController@product_view')->name('admin.product.view');

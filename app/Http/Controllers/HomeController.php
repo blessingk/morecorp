@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -25,9 +26,14 @@ class HomeController extends Controller
     public function index()
     {
       $products = Product::all();
-      return view('products.index', [
-        'products' => $products
-      ]);
+      if(Auth::user()->user_type_id == 1) {
+        return redirect('dashboard');
+      } else {
+        return view('products.index', [
+          'products' => $products
+        ]);
+      }
+
     }
 
     public function dashboard()

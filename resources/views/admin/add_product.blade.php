@@ -17,7 +17,7 @@
 
       <div class="card-body">
           <form method="POST" action="{{ route('store.product') }}">
-              <h3>Add new product</h3>
+              <h3 class="text-center">Add new product</h3>
               @csrf
 
               <div class="form-group row">

@@ -18,7 +18,7 @@
       <div class="card-body">
 
           <form method="POST" action="{{ route('update.product', $product->id) }}">
-              <h3>Edit product</h3>
+              <h3 class="text-center">Edit product</h3>
               @csrf
 
               <div class="form-group row">

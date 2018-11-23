@@ -63,12 +63,31 @@ class ProductController extends Controller
 
     public function product_info(Request $request, $id) {
       $product = Product::FindorFail($id);
+      $product->view_count = $product->view_count+1;
+      $product->save();
       $bids = Bid::where('product_id', $id)->get();
       $max = $bids->max('bid_price');
       $min = $bids->min('bid_price');
       $avg = $bids->avg('bid_price');
 
+      $my_bid = Bid::where('email', Auth::user()->email)->first();
+
       return view('products.info', [
+          'product' => $product,
+          'max' => $max,
+          'min' => $min,
+          'my_bid' => $my_bid
+      ]);
+    }
+
+    public function product_view($id) {
+      $product = Product::FindorFail($id);
+      $bids = Bid::where('product_id', $id)->get();
+      $max = $bids->max('bid_price');
+      $min = $bids->min('bid_price');
+      $avg = $bids->avg('bid_price');
+
+      return view('admin.product_view', [
           'product' => $product,
           'max' => $max,
           'min' => $min,
@@ -89,7 +108,7 @@ class ProductController extends Controller
         $bid->email = $request->email;
         $bid->save();
 
-        return redirect()->back()->withMessage('Product bid successfully');
+        return redirect('home')->withMessage('Product bid successfully');
     }
 
     public function product_bid($id) {

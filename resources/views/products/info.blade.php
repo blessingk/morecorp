@@ -6,7 +6,7 @@
     <div class="album py-5 bg-light">
       <div class="container">
           <h1>Product Info</h1>
-          <a class="text-right" href="{{url('home')}}">Back</a>
+          <a class="float-right" href="{{url('home')}}">Back</a>
 
         <div class="row">
           <div class="col-md-4">
@@ -29,9 +29,6 @@
   </main>
   <footer class="text-muted">
     <div class="container">
-      <p class="float-right">
-        <a href="#">Back to top</a>
-      </p>
       <p>Powered by MoreCorp!</p>
     </div>
   </footer>
